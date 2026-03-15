@@ -260,17 +260,6 @@
   }
   .ach-credits span { color: var(--accent); font-family:'Press Start 2P',monospace; font-size:9px; }
 
-  /* SITE FOOTER */
-  .site-footer {
-    margin-top: 40px;
-    border-top: 1px solid var(--border);
-    padding: 20px;
-    text-align: center;
-  }
-  .footer-inner { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; font-size:11px; color:var(--muted); }
-  .footer-inner span span { color:var(--accent); font-family:'Press Start 2P',monospace; font-size:9px; }
-  .footer-sep { color:var(--border); }
-
   /* GUIDES */
   .guides-panel {
     max-width: 1100px;
@@ -302,6 +291,22 @@
   .guide-name { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--text); }
   .guide-sub  { font-size:10px; color:var(--muted); }
   .yt-badge { font-size:8px; color:#fff; background:#ff0000; padding:2px 6px; margin-left:auto; align-self:center; flex-shrink:0; font-family:'Press Start 2P',monospace; white-space:nowrap; }
+
+
+  /* CALCULATORS SECTION */
+  .calculators-section {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    background: var(--panel);
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    padding: 22px 26px;
+    transition: border-color 0.3s;
+  }
+  .calculators-section:hover { border-color: var(--accent); }
+  .calculators-section .tools-grid { margin: 0; }
+  .calculators-section .panel { border-color: var(--border); }
+  .calculators-section .panel:hover { border-color: var(--accent); }
 
   /* DOWNLOADS */
   .downloads-panel {
@@ -453,45 +458,44 @@
         <span class="yt-badge">▶ Playlist</span>
       </a>
     </div>
-  </di
+  </div>
 
-  <div style="margin-top:24px"></div>
-
-  <div class="tools-grid">
-    <div class="panel">
-      <h2>Run Time Validator</h2>
-      <p class="subtitle">Enter your final time to check if it is a valid run. A time is valid only if the total milliseconds are divisible by 17 (one frame = 17ms).</p>
-      <div class="time-inputs">
-        <div class="input-group"><label>Hours</label><input type="number" id="hours" min="0" max="99" value="0"></div>
-        <div class="input-group"><label>Minutes</label><input type="number" id="minutes" min="0" max="59" value="0"></div>
-        <div class="input-group"><label>Seconds</label><input type="number" id="seconds" min="0" max="59" value="0"></div>
-        <div class="input-group"><label>Millisec.</label><input type="number" id="ms" min="0" max="999" value="0"></div>
+  <div style="max-width:1100px;margin:16px auto 0;">
+    <div class="tools-grid">
+      <div class="panel">
+        <h2>Run Time Validator</h2>
+        <p class="subtitle">Enter your final time to check if it is a valid run. A time is valid only if the total milliseconds are divisible by 17 (one frame = 17ms).</p>
+        <div class="time-inputs">
+          <div class="input-group"><label>Hours</label><input type="number" id="hours" min="0" max="99" value="0"></div>
+          <div class="input-group"><label>Minutes</label><input type="number" id="minutes" min="0" max="59" value="0"></div>
+          <div class="input-group"><label>Seconds</label><input type="number" id="seconds" min="0" max="59" value="0"></div>
+          <div class="input-group"><label>Millisec.</label><input type="number" id="ms" min="0" max="999" value="0"></div>
+        </div>
+        <hr class="divider">
+        <div class="result-row">
+          <div class="result-box"><div class="label">Total MS</div><div class="value" id="total-ms">0</div></div>
+          <div class="result-box"><div class="label">Frames</div><div class="value" id="total-frames">0</div></div>
+          <div class="verdict neutral" id="verdict">—</div>
+        </div>
+        <div class="frame-info" id="frame-info">Enter a time above to validate.</div>
       </div>
-      <hr class="divider">
-      <div class="result-row">
-        <div class="result-box"><div class="label">Total MS</div><div class="value" id="total-ms">0</div></div>
-        <div class="result-box"><div class="label">Frames</div><div class="value" id="total-frames">0</div></div>
-        <div class="verdict neutral" id="verdict">—</div>
-      </div>
-      <div class="frame-info" id="frame-info">Enter a time above to validate.</div>
-    </div>
-
-    <div class="panel">
-      <h2>Wind Cycle Calculator</h2>
-      <p class="subtitle">Enter a cycle number to find out when wind starts blowing. Cycle −1 begins at ~2:15.983. Each cycle lasts exactly 13.056 seconds.</p>
-      <div class="cycle-input-wrap">
-        <div class="input-group">
-          <label>Cycle number (e.g. 0, 1, 5, −1...)</label>
-          <input type="number" id="cycle" placeholder="0" value="">
+      <div class="panel">
+        <h2>Wind Cycle Calculator</h2>
+        <p class="subtitle">Enter a cycle number to find out when wind starts blowing. Cycle −1 begins at ~2:15.983. Each cycle lasts exactly 13.056 seconds.</p>
+        <div class="cycle-input-wrap">
+          <div class="input-group">
+            <label>Cycle number (e.g. 0, 1, 5, −1...)</label>
+            <input type="number" id="cycle" placeholder="0" value="">
+          </div>
+        </div>
+        <div id="wind-output"><div class="neutral-wind">— Enter a cycle number —</div></div>
+        <div class="cycle-info">
+          <b>Reference:</b> Cycle <span>−1</span> starts at <span>2:15.983</span> (135 983 ms)<br>
+          Each cycle: <span>+13.056s</span> &nbsp;|&nbsp; Frame duration: <span>17ms</span>
         </div>
       </div>
-      <div id="wind-output"><div class="neutral-wind">— Enter a cycle number —</div></div>
-      <div class="cycle-info">
-        <b>Reference:</b> Cycle <span>−1</span> starts at <span>2:15.983</span> (135 983 ms)<br>
-        Each cycle: <span>+13.056s</span> &nbsp;|&nbsp; Frame duration: <span>17ms</span>
-      </div>
     </div>
-
+  </div>
 </div>
 
 <!-- TAB 2: CUSTOM MAPS -->
@@ -532,28 +536,36 @@
 
 <script>
 // ── TABS ──────────────────────────────────────────────
-document.querySelectorAll('.tab-btn').forEach(btn => {
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    const name = this.dataset.tab;
-    document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
+    var name = this.dataset.tab;
+    document.querySelectorAll('.tab-page').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    var page = document.getElementById('tab-' + name);
+    if (page) page.classList.add('active');
     this.classList.add('active');
     if (name === 'maps' && !window._mapsBuilt) buildMaps();
     if (name === 'ach'  && !window._achBuilt)  buildAch();
   });
 });
 
-// ── VALIDATOR ─────────────────────────────────────────
-const FRAME_MS = 17;
-function getN(id) { return Math.max(0, parseInt(document.getElementById(id).value)||0); }
+// ── VALIDATOR ──────────────────────────────────────────
+var FRAME_MS = 17;
+function getN(id) {
+  var el = document.getElementById(id);
+  return el ? Math.max(0, parseInt(el.value) || 0) : 0;
+}
 function validateTime() {
-  const h=getN('hours'), m=Math.min(getN('minutes'),59), s=Math.min(getN('seconds'),59), ms=Math.min(getN('ms'),999);
-  const total = h*3600000 + m*60000 + s*1000 + ms;
-  const frames = Math.floor(total/FRAME_MS), rem = total%FRAME_MS;
-  document.getElementById('total-ms').textContent = total.toLocaleString();
-  document.getElementById('total-frames').textContent = frames.toLocaleString();
-  const v = document.getElementById('verdict'), inf = document.getElementById('frame-info');
+  var tms = document.getElementById('total-ms');
+  var tframes = document.getElementById('total-frames');
+  var v = document.getElementById('verdict');
+  var inf = document.getElementById('frame-info');
+  if (!tms || !v) return;
+  var h = getN('hours'), m = Math.min(getN('minutes'),59), s = Math.min(getN('seconds'),59), ms = Math.min(getN('ms'),999);
+  var total = h*3600000 + m*60000 + s*1000 + ms;
+  var frames = Math.floor(total/FRAME_MS), rem = total%FRAME_MS;
+  tms.textContent = total.toLocaleString();
+  tframes.textContent = frames.toLocaleString();
   if (!total) { v.textContent='—'; v.className='verdict neutral'; inf.innerHTML='Enter a time above to validate.'; return; }
   if (!rem) {
     v.textContent='✔ VALID'; v.className='verdict valid';
@@ -563,29 +575,35 @@ function validateTime() {
     inf.innerHTML='<span style="color:var(--accent2)">'+rem+'ms</span> remainder — nearest valid: <span>'+(total-rem)+'</span> or <span>'+(total+(FRAME_MS-rem))+'</span> ms';
   }
 }
-['hours','minutes','seconds','ms'].forEach(id => document.getElementById(id).addEventListener('input', validateTime));
+['hours','minutes','seconds','ms'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', validateTime);
+});
 validateTime();
 
 // ── WIND ──────────────────────────────────────────────
-const BASE_MS=135983, CYCLE_MS=13056;
+var BASE_MS = 135983, CYCLE_MS = 13056;
 function msToTime(ms) {
-  if (ms < 0) return { str: 'NEGATIVE', ms };
-  let r = ms;
-  const h=Math.floor(r/3600000); r-=h*3600000;
-  const m=Math.floor(r/60000);   r-=m*60000;
-  const s=Math.floor(r/1000);    r-=s*1000;
-  const p2=n=>String(n).padStart(2,'0'), p3=n=>String(n).padStart(3,'0');
-  return { str: h>0 ? h+':'+p2(m)+':'+p2(s)+'.'+p3(r) : m+':'+p2(s)+'.'+p3(r), ms };
+  if (ms < 0) return { str: 'NEGATIVE', ms: ms };
+  var r = ms;
+  var h = Math.floor(r/3600000); r -= h*3600000;
+  var m = Math.floor(r/60000);   r -= m*60000;
+  var s = Math.floor(r/1000);    r -= s*1000;
+  function p2(n) { return String(n).padStart(2,'0'); }
+  function p3(n) { return String(n).padStart(3,'0'); }
+  return { str: h > 0 ? h+':'+p2(m)+':'+p2(s)+'.'+p3(r) : m+':'+p2(s)+'.'+p3(r), ms: ms };
 }
 function calcWind() {
-  const raw = document.getElementById('cycle').value.trim();
-  const out = document.getElementById('wind-output');
+  var cycleEl = document.getElementById('cycle');
+  var out = document.getElementById('wind-output');
+  if (!cycleEl || !out) return;
+  var raw = cycleEl.value.trim();
   if (!raw) { out.innerHTML='<div class="neutral-wind">— Enter a cycle number —</div>'; return; }
-  const c = parseInt(raw);
+  var c = parseInt(raw);
   if (isNaN(c)) { out.innerHTML='<div class="neutral-wind" style="color:var(--accent2)">Invalid number.</div>'; return; }
-  const diff = c - (-1), total = BASE_MS + diff * CYCLE_MS;
+  var diff = c - (-1), total = BASE_MS + diff * CYCLE_MS;
   if (total < 0) { out.innerHTML='<div class="neutral-wind" style="color:var(--accent2)">Cycle '+c+' occurs before the run starts.</div>'; return; }
-  const res = msToTime(total);
+  var res = msToTime(total);
   out.innerHTML =
     '<div class="wind-result">' +
       '<div class="label">💨 WIND STARTS AT — CYCLE '+c+'</div>' +
@@ -596,11 +614,12 @@ function calcWind() {
       '<span>'+msToTime(Math.abs(diff*CYCLE_MS)).str+'</span>' +
     '</div>';
 }
-document.getElementById('cycle').addEventListener('input', calcWind);
+var cycleInput = document.getElementById('cycle');
+if (cycleInput) cycleInput.addEventListener('input', calcWind);
 
-// ── CUSTOM MAPS ───────────────────────────────────────
+// ── CUSTOM MAPS ────────────────────────────────────────
 window._mapsBuilt = false;
-const MAPS_DATA = [
+var MAPS_DATA = [
   {tier:1,  maps:["Main Babe","Sisters of Space"]},
   {tier:2,  maps:["New Babe+","Super Jing World"]},
   {tier:3,  maps:["Ghost of the Babe","Back to the Babe","Project Onyx"]},
@@ -624,63 +643,64 @@ function loadMapChecks() {
 function saveMapChecks(checks) {
   try { localStorage.setItem('jk_maps', JSON.stringify(checks)); } catch(e) {}
 }
-function toggleMapCheck(key, chk, row) {
-  const checks = loadMapChecks();
-  checks[key] = !checks[key];
-  saveMapChecks(checks);
-  row.classList.toggle('map-done', !!checks[key]);
-  chk.textContent = checks[key] ? '\u2714' : '';
-  updateMapsProgress();
-}
 function updateMapsProgress() {
-  const checks = loadMapChecks();
-  const total = MAPS_DATA.reduce((a, td) => a + td.maps.length, 0);
-  const done = Object.values(checks).filter(Boolean).length;
-  const el = document.getElementById('maps-progress-text');
-  const bar = document.getElementById('maps-progress-bar');
+  var checks = loadMapChecks();
+  var total = MAPS_DATA.reduce(function(a, td) { return a + td.maps.length; }, 0);
+  var done = Object.values(checks).filter(Boolean).length;
+  var el = document.getElementById('maps-progress-text');
+  var bar = document.getElementById('maps-progress-bar');
   if (el) el.textContent = done + ' / ' + total;
   if (bar) bar.style.width = (total ? done/total*100 : 0) + '%';
 }
-
+function toggleMapCheck(key, chk, row) {
+  var checks = loadMapChecks();
+  checks[key] = !checks[key];
+  saveMapChecks(checks);
+  row.classList.toggle('map-done', !!checks[key]);
+  chk.textContent = checks[key] ? '✔' : '';
+  updateMapsProgress();
+}
+function toggleTier(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
 function buildMaps() {
   window._mapsBuilt = true;
-  const checks = loadMapChecks();
-  const container = document.getElementById('maps-container');
-  MAPS_DATA.forEach(td => {
-    const dclass = td.tier <= 3 ? 'normal' : td.tier <= 8 ? 'hard' : 'extreme';
-    const dlabel = td.tier <= 3 ? 'NORMAL' : td.tier <= 8 ? 'HARD' : 'EXTREME';
-
-    const block = document.createElement('div');
+  var checks = loadMapChecks();
+  var container = document.getElementById('maps-container');
+  MAPS_DATA.forEach(function(td) {
+    var dclass = td.tier <= 3 ? 'normal' : td.tier <= 8 ? 'hard' : 'extreme';
+    var dlabel = td.tier <= 3 ? 'NORMAL' : td.tier <= 8 ? 'HARD' : 'EXTREME';
+    var block = document.createElement('div');
     block.className = 'tier-block t' + td.tier;
-
-    const header = document.createElement('div');
+    var header = document.createElement('div');
     header.className = 'tier-header';
     header.innerHTML =
       '<span class="tier-num">'+td.tier+'</span>' +
       '<span class="tier-label">TIER '+td.tier+'</span>' +
       '<span class="tier-diff '+dclass+'">'+dlabel+'</span>' +
       '<span class="tier-chevron">&#9654;</span>';
-    header.addEventListener('click', function(){ toggleTier(this); });
-
-    const list = document.createElement('div');
+    header.addEventListener('click', function() { toggleTier(this); });
+    var list = document.createElement('div');
     list.className = 'map-list';
-
     if (td.maps.length === 0) {
       list.innerHTML = '<div class="map-item"><span class="map-name" style="color:var(--muted);font-style:italic">No maps available at this tier</span></div>';
     } else {
       td.maps.forEach(function(m) {
-        const key = 't'+td.tier+'_'+m.replace(/[^a-z0-9]/gi,'_');
-        const done = !!checks[key];
-        const row = document.createElement('div');
+        var key = 't'+td.tier+'_'+m.replace(/[^a-z0-9]/gi,'_');
+        var done = !!checks[key];
+        var row = document.createElement('div');
         row.className = 'map-item' + (done ? ' map-done' : '');
-        const chk = document.createElement('div');
+        var chk = document.createElement('div');
         chk.className = 'map-check';
-        chk.textContent = done ? '\u2714' : '';
-        chk.addEventListener('click', function(e) {
-          e.stopPropagation();
-          toggleMapCheck(key, chk, row);
-        });
-        const name = document.createElement('span');
+        chk.textContent = done ? '✔' : '';
+        (function(k, c, r) {
+          c.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMapCheck(k, c, r);
+          });
+        })(key, chk, row);
+        var name = document.createElement('span');
         name.className = 'map-name';
         name.textContent = m;
         row.appendChild(chk);
@@ -688,7 +708,6 @@ function buildMaps() {
         list.appendChild(row);
       });
     }
-
     block.appendChild(header);
     block.appendChild(list);
     container.appendChild(block);
@@ -696,15 +715,9 @@ function buildMaps() {
   updateMapsProgress();
 }
 
-function toggleTier(el) {
-  el.classList.toggle('open');
-  el.nextElementSibling.classList.toggle('open');
-}
-
-// ── ACHIEVEMENTS ──────────────────────────────────────
+// ── ACHIEVEMENTS ───────────────────────────────────────
 window._achBuilt = false;
-
-const STEPS = [
+var STEPS = [
   {n:1,  text:"Start with New Babe, and chase both birds while going to the New Babe entry.", ach:[], sub:[]},
   {n:2,  text:"Enter a hidden wall, talk to the merchant 4 times.", ach:["Detective 1/48","Barter 2/48"], sub:[]},
   {n:3,  text:"Talk to the imp in the imp room.", ach:["Off the beaten path 3/48"], sub:[]},
@@ -733,8 +746,7 @@ const STEPS = [
   {n:23, text:"Finish all the fall and jump achievements.", ach:["Jump Squire 44/48","Jump Knight 45/48","Jump Lord 46/48","Just the Beginning 47/48","Thick Skull 48/48"], sub:[]}
 ];
 
-let checked = {};
-
+var checked = {};
 function loadAch() {
   try { checked = JSON.parse(localStorage.getItem('jk_ach') || '{}'); } catch(e) { checked = {}; }
 }
@@ -742,44 +754,48 @@ function saveAch() {
   try { localStorage.setItem('jk_ach', JSON.stringify(checked)); } catch(e) {}
 }
 function countAch() {
-  return STEPS.filter(s => checked[s.n]).reduce((acc, s) => acc + s.ach.length, 0);
+  return STEPS.filter(function(s) { return checked[s.n]; }).reduce(function(acc, s) { return acc + s.ach.length; }, 0);
 }
 function updateProgress() {
-  const c = countAch();
-  document.getElementById('ach-counter').textContent = c + ' / 48';
-  document.getElementById('ach-progress').style.width = (c / 48 * 100) + '%';
+  var c = countAch();
+  var counter = document.getElementById('ach-counter');
+  var bar = document.getElementById('ach-progress');
+  if (counter) counter.textContent = c + ' / 48';
+  if (bar) bar.style.width = (c / 48 * 100) + '%';
 }
 function toggleStep(n) {
   checked[n] = !checked[n];
   saveAch();
-  const block = document.getElementById('step-' + n);
+  var block = document.getElementById('step-' + n);
+  if (!block) return;
   block.classList.toggle('done', !!checked[n]);
   block.querySelector('.step-check').textContent = checked[n] ? '✔' : '';
   updateProgress();
 }
-
-document.getElementById('reset-btn').addEventListener('click', function() {
-  if (!confirm('Reset all checkboxes?')) return;
-  checked = {};
-  saveAch();
-  document.querySelectorAll('.step-block').forEach(b => {
-    b.classList.remove('done');
-    b.querySelector('.step-check').textContent = '';
-  });
-  updateProgress();
-});
-
 function buildAch() {
   window._achBuilt = true;
   loadAch();
-  const container = document.getElementById('steps-container');
-  STEPS.forEach(s => {
-    const done = !!checked[s.n];
-    const div = document.createElement('div');
+  var container = document.getElementById('steps-container');
+  var resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      if (!confirm('Reset all checkboxes?')) return;
+      checked = {};
+      saveAch();
+      document.querySelectorAll('.step-block').forEach(function(b) {
+        b.classList.remove('done');
+        b.querySelector('.step-check').textContent = '';
+      });
+      updateProgress();
+    });
+  }
+  STEPS.forEach(function(s) {
+    var done = !!checked[s.n];
+    var div = document.createElement('div');
     div.className = 'step-block' + (done ? ' done' : '');
     div.id = 'step-' + s.n;
-    const subHtml = s.sub.length ? '<ul class="step-sub">' + s.sub.map(x => '<li>'+x+'</li>').join('') + '</ul>' : '';
-    const achHtml = s.ach.length ? '<div class="ach-tags">' + s.ach.map(a => '<span class="ach-tag">'+a+'</span>').join('') + '</div>' : '';
+    var subHtml = s.sub.length ? '<ul class="step-sub">' + s.sub.map(function(x) { return '<li>'+x+'</li>'; }).join('') + '</ul>' : '';
+    var achHtml = s.ach.length ? '<div class="ach-tags">' + s.ach.map(function(a) { return '<span class="ach-tag">'+a+'</span>'; }).join('') + '</div>' : '';
     div.innerHTML =
       '<div class="step-header" onclick="toggleStep('+s.n+')">' +
         '<div class="step-check">'+(done?'✔':'')+'</div>' +
@@ -792,13 +808,13 @@ function buildAch() {
   updateProgress();
 }
 </script>
-</body>
-</html>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <span class="footer-owner">👑 Page by <span>Kurwier</span></span>
-    <span class="footer-sep">|</span>
-    <span class="footer-discord">Discord: <span>k_urwier</span></span>
+<footer style="text-align:center;margin-top:40px;border-top:1px solid var(--border);padding:20px;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);">
+    <span>👑 Page by <span style="color:var(--accent);font-family:'Press Start 2P',monospace;font-size:9px;">Kurwier</span></span>
+    <span style="color:var(--border)">|</span>
+    <span>Discord: <span style="color:var(--accent);font-family:'Press Start 2P',monospace;font-size:9px;">k_urwier</span></span>
   </div>
 </footer>
+</body>
+</html>
