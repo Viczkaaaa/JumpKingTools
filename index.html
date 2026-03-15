@@ -14,9 +14,9 @@
     --accent2: #ff4d6d;
     --valid: #39ff14;
     --invalid: #ff4d6d;
+    --wind: #4fc3f7;
     --text: #e0e0f0;
     --muted: #6a6a8a;
-    --pixel: 2px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,127 +26,85 @@
     color: var(--text);
     font-family: 'Share Tech Mono', monospace;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 30px 20px 60px;
     background-image:
       radial-gradient(ellipse 80% 40% at 50% -10%, rgba(245,197,24,0.07) 0%, transparent 70%),
-      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255,255,255,0.015) 32px),
-      repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(255,255,255,0.015) 32px);
+      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255,255,255,0.012) 32px),
+      repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(255,255,255,0.012) 32px);
   }
 
-  .page-title {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
+  .page-title { text-align: center; margin-bottom: 36px; }
+  .crown { font-size: 28px; display: block; margin-bottom: 10px; animation: bounce 1.5s ease-in-out infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
   .page-title h1 {
     font-family: 'Press Start 2P', monospace;
-    font-size: clamp(14px, 3vw, 22px);
+    font-size: clamp(13px, 2.8vw, 20px);
     color: var(--accent);
     text-shadow: 0 0 20px rgba(245,197,24,0.5), 3px 3px 0 #7a6000;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
+  .page-title p { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
 
-  .page-title p {
+  /* TABS */
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .tab-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    padding: 10px 16px;
+    background: var(--panel);
+    border: 2px solid var(--border);
     color: var(--muted);
-    font-size: 12px;
+    cursor: pointer;
     letter-spacing: 1px;
+    transition: all 0.2s;
+    white-space: nowrap;
   }
+  .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tab-btn.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
-  .crown {
-    font-size: 30px;
-    display: block;
-    margin-bottom: 12px;
-    animation: bounce 1.5s ease-in-out infinite;
-  }
+  .tab-page { display: none; max-width: 1100px; margin: 0 auto; }
+  .tab-page.active { display: block; }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-
-  .tools-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  @media (max-width: 780px) {
-    .tools-grid { grid-template-columns: 1fr; }
-  }
+  /* PANELS */
+  .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media(max-width:760px){ .tools-grid{grid-template-columns:1fr} }
 
   .panel {
     background: var(--panel);
     border: 2px solid var(--border);
-    border-radius: 4px;
-    padding: 28px;
+    border-radius: 3px;
+    padding: 26px;
     position: relative;
     overflow: hidden;
     transition: border-color 0.3s;
   }
-
   .panel::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 60%);
-    pointer-events: none;
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%,transparent 60%);
+    pointer-events:none;
   }
-
   .panel:hover { border-color: var(--accent); }
-
-  .panel-tag {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 7px;
-    color: var(--bg);
-    background: var(--accent);
-    padding: 4px 8px;
-    display: inline-block;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-  }
-
-  .panel-tag.wind { background: #4fc3f7; color: var(--bg); }
-
   .panel h2 {
     font-family: 'Press Start 2P', monospace;
-    font-size: clamp(9px, 1.5vw, 12px);
+    font-size: clamp(9px,1.4vw,12px);
     color: var(--text);
     margin-bottom: 6px;
     line-height: 1.6;
   }
+  .panel .subtitle { color: var(--muted); font-size: 11px; margin-bottom: 22px; line-height: 1.6; }
 
-  .panel .subtitle {
-    color: var(--muted);
-    font-size: 11px;
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
-
-  /* TIME INPUTS */
-  .time-inputs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .input-group label {
-    font-size: 9px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  input[type="number"], input[type="text"] {
+  /* INPUTS */
+  .time-inputs { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 16px; }
+  .input-group { display:flex; flex-direction:column; gap:6px; }
+  .input-group label { font-size:9px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
+  input[type="number"] {
     background: var(--bg);
     border: 2px solid var(--border);
     border-radius: 2px;
@@ -160,196 +118,196 @@
     transition: border-color 0.2s, box-shadow 0.2s;
     -moz-appearance: textfield;
   }
-
   input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance:none; }
+  input[type="number"]:focus { border-color:var(--accent); box-shadow:0 0 10px rgba(245,197,24,0.2); }
+  .divider { border:none; border-top:1px solid var(--border); margin:18px 0; }
 
-  input[type="number"]:focus, input[type="text"]:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 10px rgba(245,197,24,0.2);
+  /* VALIDATOR */
+  .result-row { display:flex; align-items:center; gap:12px; margin-top:18px; flex-wrap:wrap; }
+  .result-box { background:var(--bg); border:2px solid var(--border); padding:12px 16px; flex:1; min-width:90px; }
+  .result-box .label { font-size:9px; color:var(--muted); letter-spacing:1px; margin-bottom:6px; }
+  .result-box .value { font-family:'Press Start 2P',monospace; font-size:clamp(10px,1.6vw,14px); color:var(--text); word-break:break-all; }
+  .verdict { font-family:'Press Start 2P',monospace; font-size:clamp(9px,1.8vw,14px); padding:13px 18px; text-align:center; letter-spacing:1px; min-width:110px; }
+  .verdict.valid   { color:var(--valid);  border:2px solid var(--valid);  background:rgba(57,255,20,0.05); animation:pulse-g 2s ease-in-out infinite; }
+  .verdict.invalid { color:var(--invalid);border:2px solid var(--invalid);background:rgba(255,77,109,0.05);animation:pulse-r 2s ease-in-out infinite; }
+  .verdict.neutral { color:var(--muted);  border:2px solid var(--border); }
+  @keyframes pulse-g { 0%,100%{box-shadow:0 0 8px rgba(57,255,20,0.1)}  50%{box-shadow:0 0 22px rgba(57,255,20,0.4)} }
+  @keyframes pulse-r { 0%,100%{box-shadow:0 0 8px rgba(255,77,109,0.1)} 50%{box-shadow:0 0 22px rgba(255,77,109,0.4)} }
+  .frame-info { font-size:10px; color:var(--muted); margin-top:10px; }
+  .frame-info span { color:var(--accent); }
+
+  /* WIND */
+  .cycle-input-wrap { margin-bottom:20px; }
+  .cycle-input-wrap input { font-size:26px; }
+  .wind-result { background:var(--bg); border:2px solid var(--wind); padding:20px; text-align:center; position:relative; overflow:hidden; }
+  .wind-result::before { content:'💨'; position:absolute; top:-8px; right:-8px; font-size:60px; opacity:0.06; transform:rotate(-20deg); }
+  .wind-result .label { font-size:9px; color:var(--muted); letter-spacing:2px; margin-bottom:10px; }
+  .wind-time { font-family:'Press Start 2P',monospace; font-size:clamp(13px,2.4vw,20px); color:var(--wind); text-shadow:0 0 14px rgba(79,195,247,0.5); letter-spacing:2px; }
+  .neutral-wind { font-family:'Press Start 2P',monospace; font-size:11px; color:var(--muted); text-align:center; padding:20px; border:2px solid var(--border); }
+  .cycle-info { font-size:10px; color:var(--muted); margin-top:14px; line-height:1.8; border-top:1px solid var(--border); padding-top:12px; }
+  .cycle-info span { color:var(--accent2); }
+
+  /* CUSTOM MAPS */
+  .maps-page { max-width: 800px; margin: 0 auto; }
+
+  .map-check {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--valid);
   }
+  .map-check:hover { border-color: var(--valid); }
+  .map-done .map-check { border-color: var(--valid); background: rgba(57,255,20,0.12); }
+  .map-done .map-name  { text-decoration: line-through; color: var(--muted); }
+  .maps-progress-bar-wrap { width:100%; height:5px; background:var(--border); margin-bottom:18px; border-radius:3px; overflow:hidden; }
+  .maps-progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--valid)); border-radius:3px; transition:width 0.4s ease; }
+  .maps-header-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
+  .maps-counter { font-family:'Press Start 2P',monospace; font-size:10px; color:var(--accent); background:var(--panel); border:2px solid var(--accent); padding:6px 12px; }
 
-  /* RESULTS */
-  .result-row {
+  .maps-title { font-family:'Press Start 2P',monospace; font-size:clamp(9px,1.4vw,12px); color:var(--text); margin-bottom:20px; }
+  .maps-title span { color:var(--muted); font-size:8px; }
+  .tier-block { margin-bottom: 6px; }
+  .tier-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 20px;
-    flex-wrap: wrap;
+    padding: 9px 14px;
+    background: var(--panel);
+    border-left: 4px solid var(--accent);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
   }
+  .tier-header:hover { background: #1a1a26; }
+  .tier-num { font-family:'Press Start 2P',monospace; font-size:13px; color:var(--accent); min-width:26px; }
+  .tier-label { font-family:'Press Start 2P',monospace; font-size:7px; color:var(--muted); flex:1; }
+  .tier-diff { font-size:9px; padding:3px 8px; border:1px solid var(--border); border-radius:2px; color:var(--muted); }
+  .tier-diff.normal { color:#39ff14; border-color:#39ff14; }
+  .tier-diff.hard   { color:#ff9800; border-color:#ff9800; }
+  .tier-diff.extreme{ color:#ff4d6d; border-color:#ff4d6d; }
+  .tier-chevron { font-size:9px; color:var(--muted); transition:transform 0.2s; margin-left:4px; }
+  .tier-header.open .tier-chevron { transform:rotate(90deg); }
+  .map-list { display:none; border-left:4px solid var(--border); }
+  .map-list.open { display:block; }
+  .map-item { display:flex; align-items:center; gap:14px; padding:9px 14px 9px 42px; border-bottom:1px solid rgba(42,42,61,0.4); transition:background 0.15s; }
+  .map-item:hover { background:rgba(245,197,24,0.03); }
+  .map-name { flex:1; font-size:13px; color:var(--text); }
+  .map-author { font-size:10px; color:var(--muted); }
 
-  .result-box {
+  .t1  .tier-header{ border-left-color:#aaffaa; } .t1  .tier-num{color:#aaffaa;}
+  .t2  .tier-header{ border-left-color:#77dd77; } .t2  .tier-num{color:#77dd77;}
+  .t3  .tier-header{ border-left-color:#55cc55; } .t3  .tier-num{color:#55cc55;}
+  .t4  .tier-header{ border-left-color:#f5c518; } .t4  .tier-num{color:#f5c518;}
+  .t5  .tier-header{ border-left-color:#f5a518; } .t5  .tier-num{color:#f5a518;}
+  .t6  .tier-header{ border-left-color:#f08030; } .t6  .tier-num{color:#f08030;}
+  .t7  .tier-header{ border-left-color:#e06020; } .t7  .tier-num{color:#e06020;}
+  .t8  .tier-header{ border-left-color:#d04010; } .t8  .tier-num{color:#d04010;}
+  .t9  .tier-header{ border-left-color:#ff4d6d; } .t9  .tier-num{color:#ff4d6d;}
+  .t10 .tier-header{ border-left-color:#dd3355; } .t10 .tier-num{color:#dd3355;}
+  .t11 .tier-header{ border-left-color:#bb2244; } .t11 .tier-num{color:#bb2244;}
+  .t12 .tier-header{ border-left-color:#992233; } .t12 .tier-num{color:#992233;}
+  .t13 .tier-header{ border-left-color:#771122; } .t13 .tier-num{color:#771122;}
+  .t15 .tier-header{ border-left-color:#4fc3f7; } .t15 .tier-num{color:#4fc3f7;}
+
+  /* ACHIEVEMENTS */
+  .ach-page { max-width: 820px; margin: 0 auto; }
+  .ach-header-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:12px; }
+  .ach-header-bar h2 { font-family:'Press Start 2P',monospace; font-size:clamp(9px,1.5vw,12px); color:var(--text); }
+  .ach-counter { font-family:'Press Start 2P',monospace; font-size:11px; color:var(--accent); background:var(--panel); border:2px solid var(--accent); padding:8px 14px; }
+  .progress-bar-wrap { width:100%; height:6px; background:var(--border); margin-bottom:20px; border-radius:3px; overflow:hidden; }
+  .progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:3px; transition:width 0.4s ease; }
+  .reset-btn { font-family:'Share Tech Mono',monospace; font-size:10px; padding:6px 14px; background:transparent; border:1px solid var(--border); color:var(--muted); cursor:pointer; transition:all 0.2s; }
+  .reset-btn:hover { border-color:var(--accent2); color:var(--accent2); }
+
+  .step-block { background:var(--panel); border:2px solid var(--border); margin-bottom:7px; transition:border-color 0.2s,opacity 0.2s; }
+  .step-block.done { border-color:rgba(57,255,20,0.3); opacity:0.6; }
+  .step-header { display:flex; align-items:flex-start; gap:14px; padding:13px 16px; cursor:pointer; user-select:none; }
+  .step-check { width:20px; height:20px; border:2px solid var(--border); background:var(--bg); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px; margin-top:1px; transition:all 0.2s; }
+  .step-block.done .step-check { border-color:var(--valid); background:rgba(57,255,20,0.15); color:var(--valid); }
+  .step-num { font-family:'Press Start 2P',monospace; font-size:8px; color:var(--muted); min-width:24px; padding-top:3px; }
+  .step-block.done .step-num { color:var(--valid); }
+  .step-text { flex:1; font-size:12px; line-height:1.7; color:var(--text); }
+  .step-block.done .step-text { text-decoration:line-through; color:var(--muted); }
+  .ach-tags { display:flex; flex-wrap:wrap; gap:5px; padding:0 16px 11px 54px; }
+  .ach-tag { font-size:9px; padding:3px 7px; background:rgba(245,197,24,0.07); border:1px solid rgba(245,197,24,0.22); color:var(--accent); border-radius:2px; }
+  .step-sub { padding:0 16px 11px 54px; font-size:11px; color:var(--muted); line-height:1.9; list-style:none; }
+  .step-sub li::before { content:'▸ '; color:var(--accent2); }
+
+
+
+  /* GUIDES */
+  .guides-panel {
+    max-width: 1100px;
+    margin: 16px auto 0;
+    background: var(--panel);
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    padding: 22px 26px;
+    transition: border-color 0.3s;
+  }
+  .guides-panel:hover { border-color: var(--accent); }
+  .guides-panel h2 { font-family:'Press Start 2P',monospace; font-size:clamp(9px,1.4vw,11px); color:var(--text); margin-bottom:16px; }
+  .guide-list { display:flex; flex-wrap:wrap; gap:12px; }
+  .guide-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     background: var(--bg);
     border: 2px solid var(--border);
     padding: 12px 16px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    min-width: 200px;
     flex: 1;
-    min-width: 100px;
   }
+  .guide-item:hover { border-color: #ff0000; background: rgba(255,0,0,0.04); }
+  .guide-icon { font-size: 20px; flex-shrink:0; }
+  .guide-info { display:flex; flex-direction:column; gap:3px; }
+  .guide-name { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--text); }
+  .guide-sub  { font-size:10px; color:var(--muted); }
+  .yt-badge { font-size:8px; color:#fff; background:#ff0000; padding:2px 6px; margin-left:auto; align-self:center; flex-shrink:0; font-family:'Press Start 2P',monospace; white-space:nowrap; }
 
-  .result-box .label {
-    font-size: 9px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-
-  .result-box .value {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(10px, 1.8vw, 14px);
-    color: var(--text);
-    word-break: break-all;
-  }
-
-  .verdict {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(10px, 2vw, 16px);
-    padding: 14px 20px;
-    text-align: center;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    min-width: 120px;
-  }
-
-  .verdict.valid {
-    color: var(--valid);
-    border: 2px solid var(--valid);
-    background: rgba(57,255,20,0.05);
-    box-shadow: 0 0 20px rgba(57,255,20,0.15);
-    animation: pulse-green 2s ease-in-out infinite;
-  }
-
-  .verdict.invalid {
-    color: var(--invalid);
-    border: 2px solid var(--invalid);
-    background: rgba(255,77,109,0.05);
-    box-shadow: 0 0 20px rgba(255,77,109,0.15);
-    animation: pulse-red 2s ease-in-out infinite;
-  }
-
-  .verdict.neutral {
-    color: var(--muted);
+  /* DOWNLOADS */
+  .downloads-panel {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    background: var(--panel);
     border: 2px solid var(--border);
+    border-radius: 3px;
+    padding: 22px 26px;
+    transition: border-color 0.3s;
   }
-
-  @keyframes pulse-green {
-    0%, 100% { box-shadow: 0 0 10px rgba(57,255,20,0.1); }
-    50% { box-shadow: 0 0 25px rgba(57,255,20,0.4); }
-  }
-
-  @keyframes pulse-red {
-    0%, 100% { box-shadow: 0 0 10px rgba(255,77,109,0.1); }
-    50% { box-shadow: 0 0 25px rgba(255,77,109,0.4); }
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 20px 0;
-  }
-
-  .frame-info {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 10px;
-  }
-
-  .frame-info span {
-    color: var(--accent);
-  }
-
-  /* WIND PANEL */
-  .cycle-input-wrap {
+  .downloads-panel:hover { border-color: var(--accent); }
+  .downloads-panel h2 { font-family:'Press Start 2P',monospace; font-size:clamp(9px,1.4vw,11px); color:var(--text); margin-bottom:16px; }
+  .dl-list { display:flex; flex-wrap:wrap; gap:12px; }
+  .dl-item {
     display: flex;
+    align-items: center;
     gap: 12px;
-    align-items: flex-end;
-    margin-bottom: 20px;
-  }
-
-  .cycle-input-wrap .input-group {
-    flex: 1;
-  }
-
-  .cycle-input-wrap input {
-    font-size: 28px;
-  }
-
-  .wind-result {
     background: var(--bg);
-    border: 2px solid #4fc3f7;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .wind-result::before {
-    content: '💨';
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    font-size: 60px;
-    opacity: 0.07;
-    transform: rotate(-20deg);
-  }
-
-  .wind-result .label {
-    font-size: 9px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  .wind-time {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(13px, 2.5vw, 20px);
-    color: #4fc3f7;
-    text-shadow: 0 0 15px rgba(79,195,247,0.5);
-    letter-spacing: 2px;
-  }
-
-  .wind-ms {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 8px;
-  }
-
-  .wind-ms span { color: #4fc3f7; }
-
-  .cycle-info {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 16px;
-    line-height: 1.8;
-    border-top: 1px solid var(--border);
-    padding-top: 14px;
-  }
-
-  .cycle-info span { color: var(--accent2); }
-
-  .neutral-wind {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    text-align: center;
-    padding: 20px;
     border: 2px solid var(--border);
+    padding: 12px 16px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    min-width: 220px;
   }
+  .dl-item:hover { border-color: var(--accent); background: rgba(245,197,24,0.04); }
+  .dl-icon { font-size: 20px; flex-shrink:0; }
+  .dl-info { display:flex; flex-direction:column; gap:3px; }
+  .dl-name { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--accent); }
+  .dl-desc { font-size:10px; color:var(--muted); }
+  .dl-badge { font-size:8px; color:var(--bg); background:var(--accent); padding:2px 6px; margin-left:auto; align-self:center; flex-shrink:0; font-family:'Press Start 2P',monospace; }
 
-  .error-note {
-    font-size: 10px;
-    color: var(--accent2);
-    margin-top: 8px;
-  }
-
-  footer {
-    text-align: center;
-    margin-top: 50px;
-    color: var(--muted);
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
+  footer { text-align:center; margin-top:50px; color:var(--muted); font-size:10px; letter-spacing:1px; }
 </style>
 </head>
 <body>
@@ -357,196 +315,435 @@
 <div class="page-title">
   <span class="crown">👑</span>
   <h1>Jump King Tools</h1>
-  <p>Speedrun utilities &mdash; frame validation &amp; wind cycle calculator</p>
+  <p>Speedrun utilities — community resource</p>
 </div>
 
-<div class="tools-grid">
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="tools">⏱ Run Tools</button>
+  <button class="tab-btn" data-tab="maps">🗺 Custom Maps</button>
+  <button class="tab-btn" data-tab="ach">🏆 All Achievements</button>
+</div>
 
-  <!-- PANEL 1: TIME VALIDATOR -->
-  <div class="panel">
-
-    <h2>Run Time Validator</h2>
-    <p class="subtitle">Enter your final time to check if it is a valid run. A time is valid only if the total milliseconds are divisible by 17 (one frame = 17ms).</p>
-
-    <div class="time-inputs">
-      <div class="input-group">
-        <label>Hours</label>
-        <input type="number" id="hours" min="0" max="99" value="0" placeholder="0">
+<!-- TAB 1: RUN TOOLS -->
+<div class="tab-page active" id="tab-tools">
+  <div class="tools-grid">
+    <div class="panel">
+      <h2>Run Time Validator</h2>
+      <p class="subtitle">Enter your final time to check if it is a valid run. A time is valid only if the total milliseconds are divisible by 17 (one frame = 17ms).</p>
+      <div class="time-inputs">
+        <div class="input-group"><label>Hours</label><input type="number" id="hours" min="0" max="99" value="0"></div>
+        <div class="input-group"><label>Minutes</label><input type="number" id="minutes" min="0" max="59" value="0"></div>
+        <div class="input-group"><label>Seconds</label><input type="number" id="seconds" min="0" max="59" value="0"></div>
+        <div class="input-group"><label>Millisec.</label><input type="number" id="ms" min="0" max="999" value="0"></div>
       </div>
-      <div class="input-group">
-        <label>Minutes</label>
-        <input type="number" id="minutes" min="0" max="59" value="0" placeholder="0">
+      <hr class="divider">
+      <div class="result-row">
+        <div class="result-box"><div class="label">Total MS</div><div class="value" id="total-ms">0</div></div>
+        <div class="result-box"><div class="label">Frames</div><div class="value" id="total-frames">0</div></div>
+        <div class="verdict neutral" id="verdict">—</div>
       </div>
-      <div class="input-group">
-        <label>Seconds</label>
-        <input type="number" id="seconds" min="0" max="59" value="0" placeholder="0">
-      </div>
-      <div class="input-group">
-        <label>Millisec.</label>
-        <input type="number" id="ms" min="0" max="999" value="0" placeholder="0">
-      </div>
+      <div class="frame-info" id="frame-info">Enter a time above to validate.</div>
     </div>
 
-    <hr class="divider">
-
-    <div class="result-row">
-      <div class="result-box">
-        <div class="label">Total MS</div>
-        <div class="value" id="total-ms">0</div>
+    <div class="panel">
+      <h2>Wind Cycle Calculator</h2>
+      <p class="subtitle">Enter a cycle number to find out when wind starts blowing. Cycle −1 begins at ~2:15.983. Each cycle lasts exactly 13.056 seconds.</p>
+      <div class="cycle-input-wrap">
+        <div class="input-group">
+          <label>Cycle number (e.g. 0, 1, 5, −1...)</label>
+          <input type="number" id="cycle" placeholder="0" value="">
+        </div>
       </div>
-      <div class="result-box">
-        <div class="label">Frames</div>
-        <div class="value" id="total-frames">0</div>
+      <div id="wind-output"><div class="neutral-wind">— Enter a cycle number —</div></div>
+      <div class="cycle-info">
+        <b>Reference:</b> Cycle <span>−1</span> starts at <span>2:15.983</span> (135 983 ms)<br>
+        Each cycle: <span>+13.056s</span> &nbsp;|&nbsp; Frame duration: <span>17ms</span>
       </div>
-      <div class="verdict neutral" id="verdict">—</div>
-    </div>
-
-    <div class="frame-info" id="frame-info">
-      Enter a time above to validate.
     </div>
   </div>
 
-  <!-- PANEL 2: WIND CYCLE -->
-  <div class="panel">
-
-    <h2>Wind Cycle Calculator</h2>
-    <p class="subtitle">Enter a cycle number to find out when wind starts blowing. Cycle &minus;1 begins at ~2:15.983. Each cycle lasts exactly 13.056 seconds.</p>
-
-    <div class="cycle-input-wrap">
-      <div class="input-group">
-        <label>Cycle number (e.g. 0, 1, 5, &minus;1...)</label>
-        <input type="number" id="cycle" placeholder="0" value="">
-      </div>
+  <!-- DOWNLOADS -->
+  <div class="downloads-panel">
+    <h2>📦 Downloads</h2>
+    <div class="dl-list">
+      <a class="dl-item" href="https://github.com/ThoNohT/NohBoard/releases/download/v1.3.0/NohBoard-ReWrite-v1.3.0.zip" target="_blank" download>
+        <span class="dl-icon">⌨️</span>
+        <div class="dl-info">
+          <span class="dl-name">NohBoard</span>
+          <span class="dl-desc">Keyboard &amp; mouse overlay for streams</span>
+        </div>
+        <span class="dl-badge">v1.3.0</span>
+      </a>
+      <a class="dl-item" href="https://github.com/Viczkaaaa/JumpKingTools/raw/main/inventory.inv" target="_blank" download="inventory.inv">
+        <span class="dl-icon">🎒</span>
+        <div class="dl-info">
+          <span class="dl-name">All Items Save</span>
+          <span class="dl-desc">inventory.inv → Jump King/Content/SavesPerma</span>
+        </div>
+        <span class="dl-badge">.inv</span>
+      </a>
+      <a class="dl-item" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3254378877" target="_blank">
+        <span class="dl-icon">🏆</span>
+        <div class="dl-info">
+          <span class="dl-name">All Achievements Tracker</span>
+          <span class="dl-desc">Steam Guide — achievement checklist</span>
+        </div>
+        <span class="dl-badge">Steam</span>
+      </a>
     </div>
+  </div>
 
-    <div id="wind-output">
-      <div class="neutral-wind">— Enter a cycle number —</div>
-    </div>
-
-    <div class="cycle-info">
-      <b>Reference:</b> Cycle <span>&minus;1</span> starts at <span>2:15.983</span> (135983 ms)<br>
-      Each cycle: <span>+13.056s</span> &nbsp;|&nbsp; Frame duration: <span>17ms</span>
+  <!-- GUIDES -->
+  <div class="guides-panel">
+    <h2>🎬 Guides</h2>
+    <div class="guide-list">
+      <a class="guide-item" href="https://www.youtube.com/watch?v=QXusFzXY-q8" target="_blank">
+        <span class="guide-icon">💨</span>
+        <div class="guide-info">
+          <span class="guide-name">Wind Skips</span>
+          <span class="guide-sub">by Valmerix</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=rRZ5R3S1IaU" target="_blank">
+        <span class="guide-icon">🌿</span>
+        <div class="guide-info">
+          <span class="guide-name">Bog Skip</span>
+          <span class="guide-sub">by Bruno</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=fHsNkoOOCmw" target="_blank">
+        <span class="guide-icon">⚡</span>
+        <div class="guide-info">
+          <span class="guide-name">FCE</span>
+          <span class="guide-sub">by Trimp</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=Kchfqr-rpbg" target="_blank">
+        <span class="guide-icon">🏃</span>
+        <div class="guide-info">
+          <span class="guide-name">Skips</span>
+          <span class="guide-sub">by Bruno</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=LG4d-hBhHtA" target="_blank">
+        <span class="guide-icon">💨</span>
+        <div class="guide-info">
+          <span class="guide-name">Wind Skips NB+</span>
+          <span class="guide-sub">by Valmerix</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/playlist?list=PL-pEMwqZtzLDXalrba8zvUQYSHA7-lw1q" target="_blank">
+        <span class="guide-icon">🙈</span>
+        <div class="guide-info">
+          <span class="guide-name">Blindfolded Routing</span>
+          <span class="guide-sub">by Valmerix</span>
+        </div>
+        <span class="yt-badge">▶ Playlist</span>
+      </a>
     </div>
   </div>
 
 </div>
 
-<footer>
-  Jump King &copy; Nexile &nbsp;|&nbsp; Tool made for the speedrunning community
-</footer>
+<!-- TAB 2: CUSTOM MAPS -->
+<div class="tab-page" id="tab-maps">
+  <div class="maps-page">
+    <div class="maps-header-row">
+      <div class="maps-title" style="margin-bottom:0">Progression List <span>— click a tier to expand</span></div>
+      <div class="maps-counter" id="maps-progress-text">0 / 0</div>
+    </div>
+    <div class="maps-progress-bar-wrap">
+      <div class="maps-progress-bar-fill" id="maps-progress-bar" style="width:0%"></div>
+    </div>
+    <div id="maps-container"></div>
+  </div>
+</div>
+
+<!-- TAB 3: ALL ACHIEVEMENTS -->
+<div class="tab-page" id="tab-ach">
+  <div class="ach-page">
+    <div class="ach-header-bar">
+      <h2>All Achievements Route</h2>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <button class="reset-btn" id="reset-btn">↺ Reset</button>
+        <div class="ach-counter" id="ach-counter">0 / 48</div>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="ach-progress" style="width:0%"></div>
+    </div>
+    <div id="steps-container"></div>
+  </div>
+</div>
+
+
 
 <script>
-  // ─── VALIDATOR ───────────────────────────────────────────────────────────────
-  const FRAME_MS = 17;
-
-  function getInputVal(id) {
-    return Math.max(0, parseInt(document.getElementById(id).value) || 0);
-  }
-
-  function validateTime() {
-    const h  = getInputVal('hours');
-    const m  = getInputVal('minutes');
-    const s  = getInputVal('seconds');
-    const ms = getInputVal('ms');
-
-    const clamped_m  = Math.min(m, 59);
-    const clamped_s  = Math.min(s, 59);
-    const clamped_ms = Math.min(ms, 999);
-
-    const totalMs = h * 3600000 + clamped_m * 60000 + clamped_s * 1000 + clamped_ms;
-    const frames  = Math.floor(totalMs / FRAME_MS);
-    const rem     = totalMs % FRAME_MS;
-
-    document.getElementById('total-ms').textContent = totalMs.toLocaleString();
-    document.getElementById('total-frames').textContent = frames.toLocaleString();
-
-    const verdict = document.getElementById('verdict');
-    const info    = document.getElementById('frame-info');
-
-    if (totalMs === 0) {
-      verdict.textContent = '—';
-      verdict.className = 'verdict neutral';
-      info.innerHTML = 'Enter a time above to validate.';
-      return;
-    }
-
-    if (rem === 0) {
-      verdict.textContent = '✔ VALID';
-      verdict.className = 'verdict valid';
-      info.innerHTML = `<span>${totalMs}</span> ms is exactly <span>${frames}</span> frames. No leftover milliseconds.`;
-    } else {
-      verdict.textContent = '✘ INVALID';
-      verdict.className = 'verdict invalid';
-      const nextValid  = totalMs + (FRAME_MS - rem);
-      const prevValid  = totalMs - rem;
-      info.innerHTML = `<span style="color:var(--accent2)">${rem}ms</span> remainder. Nearest valid times: <span style="color:var(--valid)">${prevValid} ms</span> or <span style="color:var(--valid)">${nextValid} ms</span>`;
-    }
-  }
-
-  ['hours','minutes','seconds','ms'].forEach(id => {
-    document.getElementById(id).addEventListener('input', validateTime);
+// ── TABS ──────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const name = this.dataset.tab;
+    document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    this.classList.add('active');
+    if (name === 'maps' && !window._mapsBuilt) buildMaps();
+    if (name === 'ach'  && !window._achBuilt)  buildAch();
   });
+});
 
-  validateTime();
-
-  // ─── WIND CALCULATOR ─────────────────────────────────────────────────────────
-  const BASE_CYCLE   = -1;
-  const BASE_TIME_MS = 135983;   // 2:15.983
-  const CYCLE_MS     = 13056;    // 13.056s per cycle
-
-  function msToTime(ms) {
-    if (ms < 0) return { str: 'NEGATIVE TIME', ms };
-    const h   = Math.floor(ms / 3600000); ms -= h * 3600000;
-    const m   = Math.floor(ms / 60000);   ms -= m * 60000;
-    const s   = Math.floor(ms / 1000);    ms -= s * 1000;
-    const pad2 = n => String(n).padStart(2, '0');
-    const pad3 = n => String(n).padStart(3, '0');
-    let str = '';
-    if (h > 0) str += `${h}:${pad2(m)}:${pad2(s)}.${pad3(ms)}`;
-    else        str += `${m}:${pad2(s)}.${pad3(ms)}`;
-    return { str, ms: arguments[0] };
+// ── VALIDATOR ─────────────────────────────────────────
+const FRAME_MS = 17;
+function getN(id) { return Math.max(0, parseInt(document.getElementById(id).value)||0); }
+function validateTime() {
+  const h=getN('hours'), m=Math.min(getN('minutes'),59), s=Math.min(getN('seconds'),59), ms=Math.min(getN('ms'),999);
+  const total = h*3600000 + m*60000 + s*1000 + ms;
+  const frames = Math.floor(total/FRAME_MS), rem = total%FRAME_MS;
+  document.getElementById('total-ms').textContent = total.toLocaleString();
+  document.getElementById('total-frames').textContent = frames.toLocaleString();
+  const v = document.getElementById('verdict'), inf = document.getElementById('frame-info');
+  if (!total) { v.textContent='—'; v.className='verdict neutral'; inf.innerHTML='Enter a time above to validate.'; return; }
+  if (!rem) {
+    v.textContent='✔ VALID'; v.className='verdict valid';
+    inf.innerHTML='<span>'+total.toLocaleString()+'</span> ms = exactly <span>'+frames.toLocaleString()+'</span> frames.';
+  } else {
+    v.textContent='✘ INVALID'; v.className='verdict invalid';
+    inf.innerHTML='<span style="color:var(--accent2)">'+rem+'ms</span> remainder — nearest valid: <span>'+(total-rem)+'</span> or <span>'+(total+(FRAME_MS-rem))+'</span> ms';
   }
+}
+['hours','minutes','seconds','ms'].forEach(id => document.getElementById(id).addEventListener('input', validateTime));
+validateTime();
 
-  function calcWind() {
-    const raw = document.getElementById('cycle').value.trim();
-    const out = document.getElementById('wind-output');
+// ── WIND ──────────────────────────────────────────────
+const BASE_MS=135983, CYCLE_MS=13056;
+function msToTime(ms) {
+  if (ms < 0) return { str: 'NEGATIVE', ms };
+  let r = ms;
+  const h=Math.floor(r/3600000); r-=h*3600000;
+  const m=Math.floor(r/60000);   r-=m*60000;
+  const s=Math.floor(r/1000);    r-=s*1000;
+  const p2=n=>String(n).padStart(2,'0'), p3=n=>String(n).padStart(3,'0');
+  return { str: h>0 ? h+':'+p2(m)+':'+p2(s)+'.'+p3(r) : m+':'+p2(s)+'.'+p3(r), ms };
+}
+function calcWind() {
+  const raw = document.getElementById('cycle').value.trim();
+  const out = document.getElementById('wind-output');
+  if (!raw) { out.innerHTML='<div class="neutral-wind">— Enter a cycle number —</div>'; return; }
+  const c = parseInt(raw);
+  if (isNaN(c)) { out.innerHTML='<div class="neutral-wind" style="color:var(--accent2)">Invalid number.</div>'; return; }
+  const diff = c - (-1), total = BASE_MS + diff * CYCLE_MS;
+  if (total < 0) { out.innerHTML='<div class="neutral-wind" style="color:var(--accent2)">Cycle '+c+' occurs before the run starts.</div>'; return; }
+  const res = msToTime(total);
+  out.innerHTML =
+    '<div class="wind-result">' +
+      '<div class="label">💨 WIND STARTS AT — CYCLE '+c+'</div>' +
+      '<div class="wind-time">'+res.str+'</div>' +
+    '</div>' +
+    '<div class="frame-info" style="margin-top:10px">' +
+      'Offset from cycle −1: <span>'+(diff>=0?'+':'')+diff+'</span> cycles = ' +
+      '<span>'+msToTime(Math.abs(diff*CYCLE_MS)).str+'</span>' +
+    '</div>';
+}
+document.getElementById('cycle').addEventListener('input', calcWind);
 
-    if (raw === '') {
-      out.innerHTML = '<div class="neutral-wind">— Enter a cycle number —</div>';
-      return;
+// ── CUSTOM MAPS ───────────────────────────────────────
+window._mapsBuilt = false;
+const MAPS_DATA = [
+  {tier:1,  maps:["Main Babe","Sisters of Space"]},
+  {tier:2,  maps:["New Babe+","Super Jing World"]},
+  {tier:3,  maps:["Ghost of the Babe","Back to the Babe","Project Onyx"]},
+  {tier:4,  maps:["Babe of Fate"]},
+  {tier:5,  maps:["Babe of Ascension","Babe of Heavens"]},
+  {tier:6,  maps:["Babe of Utopia","Babe of Memories"]},
+  {tier:7,  maps:["Joe's Trial of the Babe","Babe of the Realms","Babe of Redemption","Babe of Dimension"]},
+  {tier:8,  maps:["Waterfall Babe (normal route)","Tyrant Babe (nerfed)","Babe of Dimension+","Babe of Exile"]},
+  {tier:9,  maps:["Immortal Babe","Babe of Nayuta","Babe of Inferno"]},
+  {tier:10, maps:["Immortal Babe+","Tyrant Babe (original)"]},
+  {tier:11, maps:["Babe Rising","Ghost Babe of Dimension","Waterfall Babe (pure extreme route)"]},
+  {tier:12, maps:["Babe of Transcension","Ghost of the Immortal Babe"]},
+  {tier:13, maps:["Mortal Babe"]},
+  {tier:14, maps:[]},
+  {tier:15, maps:["Babe of Fate -Fatality-"]}
+];
+
+function loadMapChecks() {
+  try { return JSON.parse(localStorage.getItem('jk_maps') || '{}'); } catch(e) { return {}; }
+}
+function saveMapChecks(checks) {
+  try { localStorage.setItem('jk_maps', JSON.stringify(checks)); } catch(e) {}
+}
+function toggleMapCheck(key, chk, row) {
+  const checks = loadMapChecks();
+  checks[key] = !checks[key];
+  saveMapChecks(checks);
+  row.classList.toggle('map-done', !!checks[key]);
+  chk.textContent = checks[key] ? '\u2714' : '';
+  updateMapsProgress();
+}
+function updateMapsProgress() {
+  const checks = loadMapChecks();
+  const total = MAPS_DATA.reduce((a, td) => a + td.maps.length, 0);
+  const done = Object.values(checks).filter(Boolean).length;
+  const el = document.getElementById('maps-progress-text');
+  const bar = document.getElementById('maps-progress-bar');
+  if (el) el.textContent = done + ' / ' + total;
+  if (bar) bar.style.width = (total ? done/total*100 : 0) + '%';
+}
+
+function buildMaps() {
+  window._mapsBuilt = true;
+  const checks = loadMapChecks();
+  const container = document.getElementById('maps-container');
+  MAPS_DATA.forEach(td => {
+    const dclass = td.tier <= 3 ? 'normal' : td.tier <= 8 ? 'hard' : 'extreme';
+    const dlabel = td.tier <= 3 ? 'NORMAL' : td.tier <= 8 ? 'HARD' : 'EXTREME';
+
+    const block = document.createElement('div');
+    block.className = 'tier-block t' + td.tier;
+
+    const header = document.createElement('div');
+    header.className = 'tier-header';
+    header.innerHTML =
+      '<span class="tier-num">'+td.tier+'</span>' +
+      '<span class="tier-label">TIER '+td.tier+'</span>' +
+      '<span class="tier-diff '+dclass+'">'+dlabel+'</span>' +
+      '<span class="tier-chevron">&#9654;</span>';
+    header.addEventListener('click', function(){ toggleTier(this); });
+
+    const list = document.createElement('div');
+    list.className = 'map-list';
+
+    if (td.maps.length === 0) {
+      list.innerHTML = '<div class="map-item"><span class="map-name" style="color:var(--muted);font-style:italic">No maps available at this tier</span></div>';
+    } else {
+      td.maps.forEach(function(m) {
+        const key = 't'+td.tier+'_'+m.replace(/[^a-z0-9]/gi,'_');
+        const done = !!checks[key];
+        const row = document.createElement('div');
+        row.className = 'map-item' + (done ? ' map-done' : '');
+        const chk = document.createElement('div');
+        chk.className = 'map-check';
+        chk.textContent = done ? '\u2714' : '';
+        chk.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleMapCheck(key, chk, row);
+        });
+        const name = document.createElement('span');
+        name.className = 'map-name';
+        name.textContent = m;
+        row.appendChild(chk);
+        row.appendChild(name);
+        list.appendChild(row);
+      });
     }
 
-    const cycle = parseInt(raw);
-    if (isNaN(cycle)) {
-      out.innerHTML = '<div class="neutral-wind" style="color:var(--accent2)">Invalid number.</div>';
-      return;
-    }
+    block.appendChild(header);
+    block.appendChild(list);
+    container.appendChild(block);
+  });
+  updateMapsProgress();
+}
 
-    const diff  = cycle - BASE_CYCLE;           // how many cycles from reference
-    const totalMs = BASE_TIME_MS + diff * CYCLE_MS;
-    const result  = msToTime(totalMs);
+function toggleTier(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
 
-    if (totalMs < 0) {
-      out.innerHTML = `
-        <div class="neutral-wind" style="color:var(--accent2)">
-          Cycle ${cycle} would occur before the run starts<br>
-          <small style="color:var(--muted)">(Computed time: ${totalMs} ms)</small>
-        </div>`;
-      return;
-    }
+// ── ACHIEVEMENTS ──────────────────────────────────────
+window._achBuilt = false;
 
-    out.innerHTML = `
-      <div class="wind-result">
-        <div class="label">💨 WIND STARTS AT — CYCLE ${cycle}</div>
-        <div class="wind-time">${result.str}</div>
-      </div>
-      <div class="frame-info" style="margin-top:10px">
-        Offset from cycle &minus;1: <span style="color:var(--accent)">${diff >= 0 ? '+' : ''}${diff}</span> cycles &nbsp;=&nbsp;
-        <span style="color:var(--accent)">${msToTime(Math.abs(diff * CYCLE_MS)).str}</span>
-      </div>`;
-  }
+const STEPS = [
+  {n:1,  text:"Start with New Babe, and chase both birds while going to the New Babe entry.", ach:[], sub:[]},
+  {n:2,  text:"Enter a hidden wall, talk to the merchant 4 times.", ach:["Detective 1/48","Barter 2/48"], sub:[]},
+  {n:3,  text:"Talk to the imp in the imp room.", ach:["Off the beaten path 3/48"], sub:[]},
+  {n:4,  text:"Collect all NB+ coins and reach Deep Ruin.", ach:["Blue Ordeal 4/48"], sub:[]},
+  {n:5,  text:"Find the nose stone right beside the Merchant.", ach:["Archeologist 5/48"], sub:[]},
+  {n:6,  text:"Keep chasing the white bird, go down to Lost Frontier and buy giant boots.", ach:["Large Feet 6/48"], sub:[]},
+  {n:7,  text:"Keep going down chasing the bird. After getting the ruby, go to snake and buy snake ring.", ach:["Favour of a Higher Being 7/48"], sub:[]},
+  {n:8,  text:"Go back to Main Babe (don't reset). Pick up gold ring, go to chapel, go back to hermit and talk to him 10 times, then finish Main Babe.", ach:["Meditations 8/48","Jump King 9/48","Fowler 10/48","Fool's Paradise 11/48"], sub:[]},
+  {n:9,  text:"Get gold ring 9 times. On the 9th time go to chapel after taking the ring and buy boots.", ach:["Fashionable 12/48","Big Spender 13/48"], sub:[]},
+  {n:10, text:"Go back to the old man and listen to him 40 times (farm some falls or jumps in the meantime).", ach:["Talkative 14/48","Apprentice of the Pond-Sage 15/48"], sub:[]},
+  {n:11, text:"Equip shoes and crown, restart the game and finish Main Babe with no falls.", ach:["Lightning-Speed Jumper 16/48","Double King 17/48","Swift Jumper 18/48","Fashion King 19/48","Godlike Jumper 20/48"], sub:[]},
+  {n:12, text:"Equip ring and finish Main Babe. On the same run, chase and skip the black bird while it's on the cages.", ach:["Absolute Will 21/48","Fool me Twice... 22/48"], sub:[]},
+  {n:13, text:"Equip giant boots and finish Main Babe.", ach:["Giant Leaps 23/48"], sub:[]},
+  {n:14, text:"Do NB+ no falls (sacrifice crown).", ach:["New King+ 24/48","Mad King 25/48"], sub:[]},
+  {n:15, text:"Equip ring and finish NB+ (start on Main Babe).", ach:["Absolute Will 26/48"], sub:[]},
+  {n:17, text:"Equip giant boots and finish NB+ (start on Main Babe).", ach:["Giant Leaps 27/48"], sub:[]},
+  {n:18, text:"Do no falls GotB in under 30 minutes.", ach:["Exorcist King 28/48","Haunted Jumper 29/48","Possessed Jumper 30/48","Nobody's Perfect 31/48"], sub:[]},
+  {n:19, text:"Equip ring and finish GotB.", ach:["Absolute Will Ghost 32/48"], sub:[]},
+  {n:20, text:"Equip giant boots and finish GotB.", ach:["Giant Leaps Ghost 33/48"], sub:[]},
+  {n:21, text:"Start a new GotB run and complete the following tasks:",
+    ach:["Disciple of the Forest Scholar 34/48","True Scholar 35/48","Helping a Brother Out 36/48","King of the Flies 37/48","Cute Cat 38/48","King & the Gang 39/48","Regal Attire 40/48"],
+    sub:["Chase the bird","Collect all mushrooms, get tunic and scholars hat","Collect all ghost fragments and get yellow shoes","Chase the fly until it drops its note","Find the 9th cat","Talk to the Gargoyles in Halted Ruin","Finish chasing the bird and end the run"]},
+  {n:22, text:"Start on any babe and wear these outfit combinations:",
+    ach:["Deadly outfit 41/48","Gnomed Out 42/48","Bird Outfit 43/48"],
+    sub:["Magical Crown + Giant Boots + Snake Ring simultaneously","Scholar's Hat + Tunic + Yellow Shoes simultaneously","Shoes + Snake Ring + King's Cape simultaneously"]},
+  {n:23, text:"Finish all the fall and jump achievements.", ach:["Jump Squire 44/48","Jump Knight 45/48","Jump Lord 46/48","Just the Beginning 47/48","Thick Skull 48/48"], sub:[]}
+];
 
-  document.getElementById('cycle').addEventListener('input', calcWind);
+let checked = {};
+
+function loadAch() {
+  try { checked = JSON.parse(localStorage.getItem('jk_ach') || '{}'); } catch(e) { checked = {}; }
+}
+function saveAch() {
+  try { localStorage.setItem('jk_ach', JSON.stringify(checked)); } catch(e) {}
+}
+function countAch() {
+  return STEPS.filter(s => checked[s.n]).reduce((acc, s) => acc + s.ach.length, 0);
+}
+function updateProgress() {
+  const c = countAch();
+  document.getElementById('ach-counter').textContent = c + ' / 48';
+  document.getElementById('ach-progress').style.width = (c / 48 * 100) + '%';
+}
+function toggleStep(n) {
+  checked[n] = !checked[n];
+  saveAch();
+  const block = document.getElementById('step-' + n);
+  block.classList.toggle('done', !!checked[n]);
+  block.querySelector('.step-check').textContent = checked[n] ? '✔' : '';
+  updateProgress();
+}
+
+document.getElementById('reset-btn').addEventListener('click', function() {
+  if (!confirm('Reset all checkboxes?')) return;
+  checked = {};
+  saveAch();
+  document.querySelectorAll('.step-block').forEach(b => {
+    b.classList.remove('done');
+    b.querySelector('.step-check').textContent = '';
+  });
+  updateProgress();
+});
+
+function buildAch() {
+  window._achBuilt = true;
+  loadAch();
+  const container = document.getElementById('steps-container');
+  STEPS.forEach(s => {
+    const done = !!checked[s.n];
+    const div = document.createElement('div');
+    div.className = 'step-block' + (done ? ' done' : '');
+    div.id = 'step-' + s.n;
+    const subHtml = s.sub.length ? '<ul class="step-sub">' + s.sub.map(x => '<li>'+x+'</li>').join('') + '</ul>' : '';
+    const achHtml = s.ach.length ? '<div class="ach-tags">' + s.ach.map(a => '<span class="ach-tag">'+a+'</span>').join('') + '</div>' : '';
+    div.innerHTML =
+      '<div class="step-header" onclick="toggleStep('+s.n+')">' +
+        '<div class="step-check">'+(done?'✔':'')+'</div>' +
+        '<span class="step-num">#'+s.n+'</span>' +
+        '<span class="step-text">'+s.text+'</span>' +
+      '</div>' +
+      subHtml + achHtml;
+    container.appendChild(div);
+  });
+  updateProgress();
+}
 </script>
 </body>
 </html>
