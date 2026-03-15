@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jump King Tools</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -244,6 +245,32 @@
 
 
 
+
+  /* GUIDE IMPORTANT */
+  .guide-important { font-size:9px; color:var(--accent2); letter-spacing:1px; }
+
+  /* ACH CREDITS */
+  .ach-credits {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .ach-credits span { color: var(--accent); font-family:'Press Start 2P',monospace; font-size:9px; }
+
+  /* SITE FOOTER */
+  .site-footer {
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+    padding: 20px;
+    text-align: center;
+  }
+  .footer-inner { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; font-size:11px; color:var(--muted); }
+  .footer-inner span span { color:var(--accent); font-family:'Press Start 2P',monospace; font-size:9px; }
+  .footer-sep { color:var(--border); }
+
   /* GUIDES */
   .guides-panel {
     max-width: 1100px;
@@ -326,6 +353,110 @@
 
 <!-- TAB 1: RUN TOOLS -->
 <div class="tab-page active" id="tab-tools">
+<!-- DOWNLOADS -->
+  <div class="downloads-panel">
+    <h2>📦 Downloads</h2>
+    <div class="dl-list">
+      <a class="dl-item" href="https://github.com/ThoNohT/NohBoard/releases/download/v1.3.0/NohBoard-ReWrite-v1.3.0.zip" target="_blank" download>
+        <span class="dl-icon">⌨️</span>
+        <div class="dl-info">
+          <span class="dl-name">NohBoard</span>
+          <span class="dl-desc">Keyboard &amp; mouse overlay for streams</span>
+        </div>
+        <span class="dl-badge">v1.3.0</span>
+      </a>
+      <a class="dl-item" href="https://github.com/Viczkaaaa/JumpKingTools/raw/main/inventory.inv" target="_blank" download="inventory.inv">
+        <span class="dl-icon">🎒</span>
+        <div class="dl-info">
+          <span class="dl-name">All Items Save</span>
+          <span class="dl-desc">inventory.inv → Jump King/Content/SavesPerma</span>
+        </div>
+        <span class="dl-badge">.inv</span>
+      </a>
+      <a class="dl-item" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3254378877" target="_blank">
+        <span class="dl-icon">🏆</span>
+        <div class="dl-info">
+          <span class="dl-name">All Achievements Tracker</span>
+        </div>
+        <span class="dl-badge">Steam</span>
+      </a>
+      <a class="dl-item" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3161216998" target="_blank">
+        <span class="dl-icon">💾</span>
+        <div class="dl-info">
+          <span class="dl-name">SaveStates</span>
+        </div>
+        <span class="dl-badge">Steam</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- GUIDES -->
+  <div class="guides-panel">
+    <h2>🎬 Guides</h2>
+    <div class="guide-list">
+      <a class="guide-item" href="https://www.youtube.com/watch?v=N4aHQ7qTnyo" target="_blank">
+        <span class="guide-icon">📖</span>
+        <div class="guide-info">
+          <span class="guide-name">Beginner's Guide</span>
+          <span class="guide-sub">by Valmerix</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=QXusFzXY-q8" target="_blank">
+        <span class="guide-icon">💨</span>
+        <div class="guide-info">
+          <span class="guide-name">Wind Skips</span>
+          <span class="guide-sub">by Valmerix</span>
+          <span class="guide-important">⚠ Very important</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=rRZ5R3S1IaU" target="_blank">
+        <span class="guide-icon">🌿</span>
+        <div class="guide-info">
+          <span class="guide-name">Bog Skip</span>
+          <span class="guide-sub">by Bruno</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=fHsNkoOOCmw" target="_blank">
+        <span class="guide-icon">⚡</span>
+        <div class="guide-info">
+          <span class="guide-name">FCE</span>
+          <span class="guide-sub">by Trimp</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=Kchfqr-rpbg" target="_blank">
+        <span class="guide-icon">🏃</span>
+        <div class="guide-info">
+          <span class="guide-name">Skips</span>
+          <span class="guide-sub">by Bruno</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=LG4d-hBhHtA" target="_blank">
+        <span class="guide-icon">💨</span>
+        <div class="guide-info">
+          <span class="guide-name">Wind Skips NB+</span>
+          <span class="guide-sub">by Valmerix</span>
+          <span class="guide-important">⚠ Very important</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/playlist?list=PL-pEMwqZtzLDXalrba8zvUQYSHA7-lw1q" target="_blank">
+        <span class="guide-icon">🙈</span>
+        <div class="guide-info">
+          <span class="guide-name">Blindfolded Routing</span>
+          <span class="guide-sub">by Valmerix</span>
+        </div>
+        <span class="yt-badge">▶ Playlist</span>
+      </a>
+    </div>
+  </di
+
+  <div style="margin-top:24px"></div>
+
   <div class="tools-grid">
     <div class="panel">
       <h2>Run Time Validator</h2>
@@ -360,93 +491,6 @@
         Each cycle: <span>+13.056s</span> &nbsp;|&nbsp; Frame duration: <span>17ms</span>
       </div>
     </div>
-  </div>
-
-  <!-- DOWNLOADS -->
-  <div class="downloads-panel">
-    <h2>📦 Downloads</h2>
-    <div class="dl-list">
-      <a class="dl-item" href="https://github.com/ThoNohT/NohBoard/releases/download/v1.3.0/NohBoard-ReWrite-v1.3.0.zip" target="_blank" download>
-        <span class="dl-icon">⌨️</span>
-        <div class="dl-info">
-          <span class="dl-name">NohBoard</span>
-          <span class="dl-desc">Keyboard &amp; mouse overlay for streams</span>
-        </div>
-        <span class="dl-badge">v1.3.0</span>
-      </a>
-      <a class="dl-item" href="https://github.com/Viczkaaaa/JumpKingTools/raw/main/inventory.inv" target="_blank" download="inventory.inv">
-        <span class="dl-icon">🎒</span>
-        <div class="dl-info">
-          <span class="dl-name">All Items Save</span>
-          <span class="dl-desc">inventory.inv → Jump King/Content/SavesPerma</span>
-        </div>
-        <span class="dl-badge">.inv</span>
-      </a>
-      <a class="dl-item" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3254378877" target="_blank">
-        <span class="dl-icon">🏆</span>
-        <div class="dl-info">
-          <span class="dl-name">All Achievements Tracker</span>
-          <span class="dl-desc">Steam Guide — achievement checklist</span>
-        </div>
-        <span class="dl-badge">Steam</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- GUIDES -->
-  <div class="guides-panel">
-    <h2>🎬 Guides</h2>
-    <div class="guide-list">
-      <a class="guide-item" href="https://www.youtube.com/watch?v=QXusFzXY-q8" target="_blank">
-        <span class="guide-icon">💨</span>
-        <div class="guide-info">
-          <span class="guide-name">Wind Skips</span>
-          <span class="guide-sub">by Valmerix</span>
-        </div>
-        <span class="yt-badge">▶ YouTube</span>
-      </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=rRZ5R3S1IaU" target="_blank">
-        <span class="guide-icon">🌿</span>
-        <div class="guide-info">
-          <span class="guide-name">Bog Skip</span>
-          <span class="guide-sub">by Bruno</span>
-        </div>
-        <span class="yt-badge">▶ YouTube</span>
-      </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=fHsNkoOOCmw" target="_blank">
-        <span class="guide-icon">⚡</span>
-        <div class="guide-info">
-          <span class="guide-name">FCE</span>
-          <span class="guide-sub">by Trimp</span>
-        </div>
-        <span class="yt-badge">▶ YouTube</span>
-      </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=Kchfqr-rpbg" target="_blank">
-        <span class="guide-icon">🏃</span>
-        <div class="guide-info">
-          <span class="guide-name">Skips</span>
-          <span class="guide-sub">by Bruno</span>
-        </div>
-        <span class="yt-badge">▶ YouTube</span>
-      </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=LG4d-hBhHtA" target="_blank">
-        <span class="guide-icon">💨</span>
-        <div class="guide-info">
-          <span class="guide-name">Wind Skips NB+</span>
-          <span class="guide-sub">by Valmerix</span>
-        </div>
-        <span class="yt-badge">▶ YouTube</span>
-      </a>
-      <a class="guide-item" href="https://www.youtube.com/playlist?list=PL-pEMwqZtzLDXalrba8zvUQYSHA7-lw1q" target="_blank">
-        <span class="guide-icon">🙈</span>
-        <div class="guide-info">
-          <span class="guide-name">Blindfolded Routing</span>
-          <span class="guide-sub">by Valmerix</span>
-        </div>
-        <span class="yt-badge">▶ Playlist</span>
-      </a>
-    </div>
-  </div>
 
 </div>
 
@@ -478,6 +522,9 @@
       <div class="progress-bar-fill" id="ach-progress" style="width:0%"></div>
     </div>
     <div id="steps-container"></div>
+    <div class="ach-credits">
+      Route by <span>Mental Masochist</span>
+    </div>
   </div>
 </div>
 
@@ -747,3 +794,11 @@ function buildAch() {
 </script>
 </body>
 </html>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-owner">👑 Page by <span>Kurwier</span></span>
+    <span class="footer-sep">|</span>
+    <span class="footer-discord">Discord: <span>k_urwier</span></span>
+  </div>
+</footer>
