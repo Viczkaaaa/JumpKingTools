@@ -819,6 +819,25 @@ function buildAch() {
   });
   updateProgress();
 }
+
+// ── EASTER EGG ────────────────────────────────────────
+(function() {
+  var sequence = ['j','u','m','p','k','i','n','g'];
+  var current = 0;
+  var audio = new Audio('xd.mp3');
+  document.addEventListener('keydown', function(e) {
+    if (e.key.toLowerCase() === sequence[current]) {
+      current++;
+      if (current === sequence.length) {
+        current = 0;
+        audio.currentTime = 0;
+        audio.play();
+      }
+    } else {
+      current = e.key.toLowerCase() === sequence[0] ? 1 : 0;
+    }
+  });
+})();
 </script>
 
 <footer style="text-align:center;margin-top:40px;border-top:1px solid var(--border);padding:20px;">
