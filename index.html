@@ -297,6 +297,7 @@
     border: 2px solid var(--border);
     padding: 12px 16px;
     text-decoration: none;
+    overflow: hidden;
     transition: border-color 0.2s, background 0.2s;
     min-width: 200px;
     flex: 1;
@@ -306,7 +307,7 @@
   .guide-info { display:flex; flex-direction:column; gap:3px; }
   .guide-name { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--text); }
   .guide-sub  { font-size:10px; color:var(--muted); }
-  .yt-badge { font-size:8px; color:#fff; background:#ff0000; padding:2px 6px; margin-left:auto; align-self:center; flex-shrink:0; font-family:'Press Start 2P',monospace; white-space:nowrap; }
+  .yt-badge { font-size:8px; color:#fff; background:#ff0000; padding:2px 6px; margin-left:auto; align-self:center; flex-shrink:0; font-family:'Press Start 2P',monospace; white-space:nowrap; max-width:80px; overflow:hidden; text-overflow:ellipsis; }
 
 
   /* CALCULATORS SECTION */
@@ -345,6 +346,7 @@
     border: 2px solid var(--border);
     padding: 12px 16px;
     text-decoration: none;
+    overflow: hidden;
     transition: border-color 0.2s, background 0.2s;
     min-width: 220px;
   }
