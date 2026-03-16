@@ -76,6 +76,7 @@
   /* PANELS */
   .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
   @media(max-width:760px){ .tools-grid{grid-template-columns:1fr} }
+  @media(max-width:760px){ #tab-rules .\:style-grid { grid-template-columns:1fr !important; } }
 
   .panel {
     background: var(--panel);
@@ -266,7 +267,7 @@
   .rule-item {
     background: var(--panel);
     border: 2px solid var(--border);
-    border-left: 4px solid var(--accent);
+    border-left: 4px solid var(--rule-border, var(--accent));
     padding: 14px 18px;
     font-size: 12px;
     color: var(--text);
@@ -619,29 +620,39 @@
   </div>
 </div>
 
-
-
-<!-- TAB: RULES -->
 <div class="tab-page" id="tab-rules">
-  <div style="max-width:760px;margin:0 auto;">
-    <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.4vw,12px);color:var(--text);margin-bottom:24px;">📋 Speedrun Rules</div>
-    <div class="rules-list">
-          <div class="rule-item"><p>All Submitted Runs must be less than 1 hour in game time. The only exception to this rule is the 100% and All Achievements category.</p></div>
-          <div class="rule-item"><p>Most submissions will be verified within a few days however longer categories may take over a week, please do not message moderators about your submission unless it has been longer than 3 weeks.</p></div>
-          <div class="rule-item"><p>Upon starting a new game get to the babe as fast as possible. Your final time will be your "In-Game Time" shown after the credits. Make sure to always include this screen when submitting. Runs must be completed on Session 1 (with the exception of the 100% category).</p></div>
-          <div class="rule-item"><p>The use of macros or any program to assist with jump timing is not allowed. All runs submitted must be played on the most recent version excluding betas.(The one with fixed timer precision).</p></div>
-          <div class="rule-item"><p>Cheats are not permitted during runs however the more precise timer, in-game% and fast restart is allowed. Use of coordinates or Jump% is not permitted.</p></div>
-          <div class="rule-item"><p>Use of the Snake Ring or Giant Boots is not allowed for Main Babe or New Babe. Snake Ring is partially permitted for Ghost of the Babe (Giant Boots are fully banned though), and fully permitted for all custom maps that do not specifically state otherwise.</p></div>
-          <div class="rule-item"><p>Mods that change the in-game sound effects are permitted.</p></div>
-          <div class="rule-item"><p>Reskins are also permitted as long as they do not significantly change the shape of the Jump King, complete character redesigns are usually not permitted. Mods that change your characters colour is fine, a mod that changes your character into a bird for example is not. This rule is generally less enforced if your time is slower, if you are submitting a sub 5 minute time however please make sure your skin is acceptable.</p></div>
-          <div class="rule-item"><p>Don't post meme runs like 6 minute IL times of you jumping around jokingly before passing the level they won't be verified.</p></div>
-          <div class="rule-item"><p>For Main Babe runs over 10 minutes, a screenshot of your final time + falls is enough for verification however full video is still encouraged. Full video is required for runs under 10 minutes (and all non Main Babe runs) with no cuts.</p></div>
-          <div class="rule-item"><p>On screen input display is preferred for all Main Category World Record submissions. Gamepadviewer for controller or Nohboard for keyboard are both good but anything that shows your inputs is fine. If you can't use input display, in-game audio as well as being able to hear your inputs being pressed would also be fine.</p></div>
-          <div class="rule-item"><p>Do not submit your run using any method that requires the moderators to have to download something like google drive. Upload the run first and then submit a link directly.</p></div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+      <div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(8px,1.2vw,10px);color:var(--accent);margin-bottom:16px;letter-spacing:1px;">📋 Speedrun Rules</div>
+        <div class="rules-list">
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>All Submitted Runs must be less than 1 hour in game time. The only exception to this rule is the 100% and All Achievements category.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Most submissions will be verified within a few days however longer categories may take over a week, please do not message moderators about your submission unless it has been longer than 3 weeks.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Upon starting a new game get to the babe as fast as possible. Your final time will be your "In-Game Time" shown after the credits. Make sure to always include this screen when submitting. Runs must be completed on Session 1 (with the exception of the 100% category).</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>The use of macros or any program to assist with jump timing is not allowed. All runs submitted must be played on the most recent version excluding betas.(The one with fixed timer precision).</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Cheats are not permitted during runs however the more precise timer, in-game% and fast restart is allowed. Use of coordinates or Jump% is not permitted.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Use of the Snake Ring or Giant Boots is not allowed for Main Babe or New Babe. Snake Ring is partially permitted for Ghost of the Babe (Giant Boots are fully banned though), and fully permitted for all custom maps that do not specifically state otherwise.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Mods that change the in-game sound effects are permitted.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Reskins are also permitted as long as they do not significantly change the shape of the Jump King, complete character redesigns are usually not permitted. Mods that change your characters colour is fine, a mod that changes your character into a bird for example is not. This rule is generally less enforced if your time is slower, if you are submitting a sub 5 minute time however please make sure your skin is acceptable.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Don't post meme runs like 6 minute IL times of you jumping around jokingly before passing the level they won't be verified.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>For Main Babe runs over 10 minutes, a screenshot of your final time + falls is enough for verification however full video is still encouraged. Full video is required for runs under 10 minutes (and all non Main Babe runs) with no cuts.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>On screen input display is preferred for all Main Category World Record submissions. Gamepadviewer for controller or Nohboard for keyboard are both good but anything that shows your inputs is fine. If you can't use input display, in-game audio as well as being able to hear your inputs being pressed would also be fine.</p></div>
+          <div class="rule-item" style="border-left-color:var(--accent);"><p>Do not submit your run using any method that requires the moderators to have to download something like google drive. Upload the run first and then submit a link directly.</p></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(8px,1.2vw,10px);color:var(--wind);margin-bottom:16px;letter-spacing:1px;">🏁 IL Rules</div>
+        <div class="rules-list">
+          <div class="rule-item" style="border-left-color:var(--wind);"><p>A run starts when entering the first screen of the area being run or on a restart for the first areas. The timer stops on transition out of the area being run or starting the babe cutscene if it's the last area. The run is only valid if the player doesn't drop back down from the above area. This is to prevent cheesy gameplay that is unlike the full Jump King speedruns.</p></div>
+          <div class="rule-item" style="border-left-color:var(--wind);"><p>Runs can be only done on PC (for now). This is due to the timers of XBox and PS4 being not reflective of the real time.</p></div>
+          <div class="rule-item" style="border-left-color:var(--wind);"><p>Times will be kept track of with the precise timer from Jump King Plus. This is due to inconsistencies with the framerate of Jump King while recording. To activate the precise timer you have to change the config.</p></div>
+          <div class="rule-item" style="border-left-color:var(--wind);"><p>Snake Ring is not allowed except for the Bog IL (full run not only the area) and the last screen on Philosophers Forest IL (the screen with the hole). For the Bog it is important to note that either (1) hotkeys are being used (so it can be accurately retimed) OR (2) livesplit is being used and is comparing against gametime (<a href="https://imgur.com/a/mMyH7ui" target="_blank" style="color:var(--accent);">https://imgur.com/a/mMyH7ui</a>). This is needed due to timing differences when pausing the game to switch on/off snake ring.</p></div>
+          <div class="rule-item" style="border-left-color:var(--wind);"><p>Cheats can be used to help reset the run. Saving position in the air and jumping from midair is not allowed. The initial jump has to be done from a platform (has to be doable without cheats). Use of coordinates or Jump% is not permitted.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 <script>
 // ── TABS ──────────────────────────────────────────────
 document.querySelectorAll('.tab-btn').forEach(function(btn) {
