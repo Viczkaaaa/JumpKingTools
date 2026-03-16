@@ -354,6 +354,7 @@
   <button class="tab-btn active" data-tab="tools">⏱ Run Tools</button>
   <button class="tab-btn" data-tab="maps">🗺 Custom Maps</button>
   <button class="tab-btn" data-tab="ach">🏆 All Achievements</button>
+  <button class="tab-btn" onclick="document.getElementById('rules-modal').style.display='block'" style="background:var(--accent2);border-color:var(--accent2);color:#fff;">📋 Rules</button>
 </div>
 
 <!-- TAB 1: RUN TOOLS -->
@@ -399,11 +400,43 @@
   <div class="guides-panel">
     <h2>🎬 Guides</h2>
     <div class="guide-list">
+      <a class="guide-item" href="https://www.youtube.com/watch?v=JMV7Bq6wPak" target="_blank">
+        <span class="guide-icon">📐</span>
+        <div class="guide-info">
+          <span class="guide-name">Full Jumps Main Babe</span>
+          <span class="guide-sub">by Heppy</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=kXjd2ps3YNg" target="_blank">
+        <span class="guide-icon">📐</span>
+        <div class="guide-info">
+          <span class="guide-name">Full Jumps New Babe+</span>
+          <span class="guide-sub">by Heppy</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=hft0yllmvoI" target="_blank">
+        <span class="guide-icon">📐</span>
+        <div class="guide-info">
+          <span class="guide-name">Full Jumps Ghost of the Babe</span>
+          <span class="guide-sub">by Heppy</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
       <a class="guide-item" href="https://www.youtube.com/watch?v=N4aHQ7qTnyo" target="_blank">
         <span class="guide-icon">📖</span>
         <div class="guide-info">
           <span class="guide-name">Beginner's Guide</span>
           <span class="guide-sub">by Valmerix</span>
+        </div>
+        <span class="yt-badge">▶ YouTube</span>
+      </a>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=Kchfqr-rpbg" target="_blank">
+        <span class="guide-icon">🏃</span>
+        <div class="guide-info">
+          <span class="guide-name">Skips</span>
+          <span class="guide-sub">by Bruno</span>
         </div>
         <span class="yt-badge">▶ YouTube</span>
       </a>
@@ -416,36 +449,29 @@
         </div>
         <span class="yt-badge">▶ YouTube</span>
       </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=rRZ5R3S1IaU" target="_blank">
-        <span class="guide-icon">🌿</span>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=LG4d-hBhHtA" target="_blank">
+        <span class="guide-icon">💨</span>
         <div class="guide-info">
-          <span class="guide-name">Bog Skip</span>
-          <span class="guide-sub">by Bruno</span>
+          <span class="guide-name">Wind Skips New Babe+</span>
+          <span class="guide-sub">by Valmerix</span>
+          <span class="guide-important">⚠ Very important</span>
         </div>
         <span class="yt-badge">▶ YouTube</span>
       </a>
       <a class="guide-item" href="https://www.youtube.com/watch?v=fHsNkoOOCmw" target="_blank">
         <span class="guide-icon">⚡</span>
         <div class="guide-info">
-          <span class="guide-name">FCE</span>
+          <span class="guide-name">Fast Chapel Entry</span>
           <span class="guide-sub">by Trimp</span>
         </div>
         <span class="yt-badge">▶ YouTube</span>
       </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=Kchfqr-rpbg" target="_blank">
-        <span class="guide-icon">🏃</span>
+      <a class="guide-item" href="https://www.youtube.com/watch?v=rRZ5R3S1IaU" target="_blank">
+        <span class="guide-icon">🌿</span>
         <div class="guide-info">
-          <span class="guide-name">Skips</span>
+          <span class="guide-name">Bog Skip</span>
           <span class="guide-sub">by Bruno</span>
-        </div>
-        <span class="yt-badge">▶ YouTube</span>
-      </a>
-      <a class="guide-item" href="https://www.youtube.com/watch?v=LG4d-hBhHtA" target="_blank">
-        <span class="guide-icon">💨</span>
-        <div class="guide-info">
-          <span class="guide-name">Wind Skips NB+</span>
-          <span class="guide-sub">by Valmerix</span>
-          <span class="guide-important">⚠ Very important</span>
+          <span class="guide-important" style="color:var(--accent);">⚠ Important</span>
         </div>
         <span class="yt-badge">▶ YouTube</span>
       </a>
@@ -847,5 +873,14 @@ function buildAch() {
     <span>Discord: <span style="color:var(--accent);font-family:'Press Start 2P',monospace;font-size:9px;">k_urwier</span></span>
   </div>
 </footer>
+
+<!-- RULES MODAL -->
+<div id="rules-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;overflow-y:auto;padding:40px 20px;">
+  <div style="max-width:760px;margin:0 auto;background:var(--panel);border:2px solid var(--accent);padding:32px;position:relative;">
+    <button onclick="document.getElementById('rules-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:transparent;border:2px solid var(--border);color:var(--muted);font-family:'Press Start 2P',monospace;font-size:9px;padding:6px 10px;cursor:pointer;">✕ CLOSE</button>
+    <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--accent);margin-bottom:24px;letter-spacing:1px;">📋 Speedrun Rules</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.9;"><p>All Submitted Runs must be less than 1 hour in game time. The only exception to this rule is the 100% category.</p><p>Most submissions will be verified within a few days however longer categories may take over a week, please do not message moderators about your submission unless it has been longer than 3 weeks.</p><p>Upon starting a new game get to the babe as fast as possible. Your final time will be your "In-Game Time" shown after the credits. Make sure to always include this screen when submitting. Runs must be completed on Session 1 (with the exception of the 100% category).</p><p>The use of macros or any program to assist with jump timing is not allowed. All runs submitted must be played on the most recent version excluding betas.(The one with fixed timer precision).</p><p>Use of the Snake Ring or Giant Boots is not allowed for Main Babe or New Babe. Snake Ring is partially permitted for Ghost of the Babe (Giant Boots are fully banned though), and fully permitted for all custom maps that do not specifically state otherwise.</p><p>JumpKingPlus Users - Cheats are not permitted during runs however the more precise timer, in-game% and fast restart is allowed. Use of coordinates or Jump% is not permitted.</p><p>Mods that change the in-game sound effects are permitted.</p><p>Reskins are also permitted as long as they do not significantly change the shape of the Jump King, complete character redesigns are usually not permitted. Mods that change your characters colour is fine, a mod that changes your character into a bird for example is not.</p><p>This rule is generally less enforced if your time is slower, if you are submitting a sub 5 minute time however please make sure your skin is acceptable.</p><p>Don't post meme runs like 6 minute IL times of you jumping around jokingly before passing the level they won't be verified.</p><p>For Main Babe runs over 10 minutes, a screenshot of your final time + falls is enough for verification however full video is still encouraged. Full video is required for runs under 10 minutes (and all non Main Babe runs) with no cuts.</p><p>On screen input display is preferred for all Main Category World Record submissions. Gamepadviewer for controller or Nohboard for keyboard are both good but anything that shows your inputs is fine. If you can't use input display, in-game audio as well as being able to hear your inputs being pressed would also be fine.</p><p>Do not submit your run using any method that requires the moderators to have to download something like google drive. Upload the run first and then submit a link directly.</p></div>
+  </div>
+</div>
 </body>
 </html>
